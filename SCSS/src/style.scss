@@ -7,10 +7,19 @@
   --blue: #0b84e0;
 }
 
+@mixin outline($color) {
+  outline: 2px solid var($color);
+  outline-offset: 2px;
+}
+
+@mixin bgAndcolo($backgroundColor, $textcolor) {
+  background-color: $backgroundColor;
+  color: $color;
+}
+
 /* Header */
 .site-header {
-  background: var(--black);
-  color: var(--white);
+  @include bgAndcolo(var(--black), var(--white));
 
   .site-header__top {
     display: flex;
@@ -38,8 +47,7 @@
     .site-header__search-input {
       padding: 8px 10px;
       border: 1px solid var(--darkgrey);
-      background: var(--black);
-      color: var(--white);
+      @include bgAndcolo(var(--black), var(--white));
       &:focus {
         outline: 2px solid var(--lightgreen);
       }
@@ -48,8 +56,7 @@
     .site-header__search-button {
       padding: 8px 12px;
       border: 1px solid var(--darkgrey);
-      background: var(--black);
-      color: var(--white);
+      @include bgAndcolo(var(--black), var(--white));
       cursor: pointer;
     }
   }
@@ -129,8 +136,7 @@
           text-decoration: none;
 
           &:hover {
-            background: var(--darkgrey);
-            color: var(--white);
+            @include bgAndcolo(var(--darkgrey), var(--white));
           }
         }
       }
@@ -159,8 +165,7 @@
           text-decoration: none;
 
           &:hover {
-            background: var(--black);
-            color: var(--white);
+            @include bgAndcolo(var(--black), var(--white));
           }
         }
       }
@@ -171,8 +176,10 @@
 /* Hero */
 .hero {
   padding: 48px 16px;
-  background: linear-gradient(135deg, var(--darkgrey), var(--black));
-  color: var(--white);
+  @include bgAndcolo(
+    linear-gradient(135deg, var(--darkgrey), var(--black)),
+    var(--white)
+  );
 
   .hero__content {
     max-width: 1200px;
@@ -199,8 +206,7 @@
       color: var(--white);
     }
     .hero__button--primary {
-      background: var(--lightgreen);
-      color: var(--black);
+      @include bgAndcolo(var(--lightgreen), var(--black));
       border-color: var(--lightgreen);
     }
     .hero__button--ghost {
@@ -281,10 +287,10 @@
     .feature-card--highlight {
       border-color: var(--lightgreen);
       box-shadow: 0 0 0 2px rgba(var(--darkgrey), 0.15);
+
       .feature-card__button {
         border: 1px solid var(--lightgreen);
-        background: var(--lightgreen);
-        color: var(--black);
+        @include bgAndcolo(var(--lightgreen), var(--black));
         padding: 8px 12px;
       }
     }
@@ -293,8 +299,7 @@
 
 /* Footer */
 .site-footer {
-  background: var(--black);
-  color: var(--white);
+  @include bgAndcolo(var(--black), var(--white));
 
   .site-footer__cols {
     display: grid;
@@ -360,8 +365,7 @@
   .hero__actions {
     .hero__button {
       &:focus {
-        outline: 2px solid var(--lightgreen);
-        outline-offset: 2px;
+        @include outline(var(--lightgreen));
       }
     }
   }
@@ -369,8 +373,7 @@
 .product-card {
   .product-card__btn {
     &:focus {
-      outline: 2px solid var(--blue);
-      outline-offset: 2px;
+      @include outline(var(--blue));
     }
   }
 }
@@ -379,8 +382,7 @@
     .form {
       .form__button {
         &:focus {
-          outline: 2px solid var(--blue);
-          outline-offset: 2px;
+          @include outline(var(--blue));
         }
       }
     }
@@ -390,8 +392,7 @@
   .site-nav {
     .site-nav__link {
       &:focus {
-        outline: 2px solid var(--lightgreen);
-        outline-offset: 2px;
+        @include outline(var(--lightgreen));
       }
     }
   }
